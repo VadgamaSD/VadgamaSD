@@ -84,7 +84,6 @@
     font-family:'Work Sans', ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing:antialiased;
     -webkit-tap-highlight-color:transparent;
-    padding-bottom:calc(64px + env(safe-area-inset-bottom));
   }
   .lang-my, .lang-ksw, .lang-pwo, [lang="my"], [lang="ksw"], [lang="pwo"] {
     font-family:'Noto Sans Myanmar','Work Sans', ui-sans-serif, sans-serif;
@@ -123,46 +122,7 @@
     color:var(--text-muted);
   }
 
-  nav.tabs{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    z-index:20;
-    display:flex;
-    gap:2px;
-    background:var(--surface);
-    border-top:1px solid var(--line);
-    padding:6px 10px calc(6px + env(safe-area-inset-bottom));
-    box-shadow:0 -2px 12px rgba(20,31,25,0.08);
-  }
-  nav.tabs button{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:2px;
-    min-height:52px;
-    border:none;
-    background:transparent;
-    color:var(--text-muted);
-    font:inherit;
-    font-weight:600;
-    font-size:0.8rem;
-    padding:6px 6px;
-    border-radius:10px;
-    cursor:pointer;
-  }
-  nav.tabs button svg{ width:20px; height:20px; }
-  nav.tabs button[aria-selected="true"]{
-    background:var(--surface-2);
-    color:var(--accent-strong);
-  }
-  nav.tabs button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
-
-  main{ padding-block:20px 24px; }
-  section[hidden]{ display:none !important; }
+  main{ padding-block:20px 40px; }
 
   .callout{
     display:flex;
@@ -180,14 +140,6 @@
   .callout strong{ color:inherit; }
   .callout svg{ flex-shrink:0; margin-top:2px; }
 
-  .panel{
-    background:var(--surface);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:18px;
-    box-shadow:var(--shadow);
-  }
-
   label.field-label{
     display:block;
     font-size:0.78rem;
@@ -197,24 +149,17 @@
     color:var(--text-muted);
     margin-bottom:6px;
   }
-  textarea, input[type="text"], select{
+  input[type="text"]{
     font:inherit;
     font-size:16px;
     color:var(--text);
-    background:var(--bg);
+    background:var(--surface);
     border:1px solid var(--line);
     border-radius:9px;
     padding:12px;
     width:100%;
   }
-  textarea{
-    min-height:96px;
-    resize:vertical;
-  }
-  select{
-    min-height:44px;
-  }
-  textarea:focus, input:focus, select:focus, button:focus-visible{
+  input:focus, button:focus-visible{
     outline:2px solid var(--accent);
     outline-offset:1px;
   }
@@ -226,72 +171,30 @@
     gap:6px;
     font:inherit;
     font-weight:600;
-    font-size:0.92rem;
-    border-radius:9px;
-    border:1px solid transparent;
-    padding:12px 16px;
-    min-height:46px;
+    font-size:0.8rem;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--text);
+    padding:8px 12px;
+    min-height:38px;
     cursor:pointer;
     white-space:nowrap;
   }
+  .btn:hover{ background:var(--surface-2); }
   .btn-primary{
     background:var(--accent);
     color:var(--accent-contrast);
+    border-color:transparent;
   }
   .btn-primary:hover{ background:var(--accent-strong); }
-  .btn-primary:disabled{ opacity:0.55; cursor:default; }
-  .btn-ghost{
-    background:transparent;
-    border-color:var(--line);
-    color:var(--text);
-  }
-  .btn-ghost:hover{ background:var(--surface-2); }
-  .btn-sm{ padding:8px 12px; font-size:0.8rem; border-radius:8px; min-height:38px; }
-
-  .row-end{ display:flex; justify-content:flex-end; margin-top:12px; }
-
-  .results{ margin-top:20px; display:flex; flex-direction:column; gap:12px; }
-
-  .lang-card{
-    border:1px solid var(--line);
-    border-radius:11px;
-    padding:12px 14px;
-    background:var(--bg);
-  }
-  .lang-card-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px;
-    margin-bottom:6px;
-  }
-  .lang-name{ font-weight:600; font-size:0.9rem; }
-  .lang-text{ font-size:1.02rem; line-height:1.5; }
-  .lang-actions{ display:flex; gap:6px; margin-top:8px; }
-
-  .badge{
-    display:inline-flex;
-    align-items:center;
-    gap:4px;
-    font-size:0.72rem;
-    font-weight:600;
-    letter-spacing:0.02em;
-    padding:2px 8px;
-    border-radius:999px;
-    border:1px solid transparent;
-    white-space:nowrap;
-  }
-  .badge-verified{ background:var(--ok-bg); color:var(--ok-text); border-color:var(--ok-line); }
-  .badge-draft{ background:var(--warn-bg); color:var(--warn-text); border-color:var(--warn-line); }
-  .badge-empty{ background:var(--empty-bg); color:var(--empty-text); }
 
   .toolbar{
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:16px;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:18px;
   }
-  .toolbar input[type="text"]{ flex:1; min-width:160px; }
   .chips{ display:flex; gap:6px; flex-wrap:wrap; }
   .chip{
     font:inherit;
@@ -301,8 +204,9 @@
     background:var(--surface);
     color:var(--text-muted);
     border-radius:999px;
-    padding:6px 12px;
+    padding:7px 13px;
     cursor:pointer;
+    min-height:38px;
   }
   .chip[aria-pressed="true"]{
     background:var(--accent);
@@ -360,7 +264,22 @@
   }
   .lang-row-text{ font-size:1rem; line-height:1.5; }
   .lang-row-text.placeholder{ color:var(--text-muted); font-style:italic; }
-  .lang-row-actions{ display:flex; gap:6px; flex-wrap:wrap; }
+  .lang-row-actions{ display:flex; gap:6px; flex-wrap:wrap; margin-top:2px; }
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    padding:2px 8px;
+    border-radius:999px;
+    border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .badge-draft{ background:var(--warn-bg); color:var(--warn-text); border-color:var(--warn-line); }
+  .badge-empty{ background:var(--empty-bg); color:var(--empty-text); }
 
   .empty-state{
     text-align:center;
@@ -369,37 +288,23 @@
     font-size:0.95rem;
   }
 
-  .add-phrase{ margin-top:18px; }
-
-  .thinking{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
+  .footer-panel{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 18px;
+    margin-top:20px;
+    font-size:0.87rem;
+    line-height:1.5;
     color:var(--text-muted);
-    font-size:0.85rem;
   }
-  .dot{
-    width:5px; height:5px; border-radius:50%;
-    background:var(--text-muted);
-    animation:pulse 1.1s infinite ease-in-out;
-  }
-  .dot:nth-child(2){ animation-delay:0.15s; }
-  .dot:nth-child(3){ animation-delay:0.3s; }
-  @keyframes pulse{ 0%,80%,100%{opacity:0.25;} 40%{opacity:1;} }
-  @media (prefers-reduced-motion: reduce){ .dot{ animation:none; opacity:0.7; } }
-
-  .status-line{ font-size:0.82rem; color:var(--text-muted); margin-top:8px; }
-  .status-line.error{ color:var(--danger-text); }
-
-  form.add-phrase-form{ display:flex; flex-direction:column; gap:10px; }
-  .form-grid{ display:flex; gap:10px; flex-wrap:wrap; }
-  .form-grid > div{ flex:1; min-width:140px; }
+  .footer-panel strong{ color:var(--text); }
 
   footer.hint{
     text-align:center;
     color:var(--text-muted);
     font-size:0.78rem;
-    padding:20px 20px 10px;
+    padding:20px 20px calc(20px + env(safe-area-inset-bottom));
   }
 </style>
 
@@ -412,76 +317,35 @@
   </div>
 </header>
 
-<nav class="tabs" role="tablist">
-  <button role="tab" id="tab-announce" aria-selected="true">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h11v9H8l-4 3.5V4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 9v9l-3-2.5h-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-    Announce
-  </button>
-  <button role="tab" id="tab-library" aria-selected="false">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M5 4.5h9.5A2.5 2.5 0 0 1 17 7v13H7a2.5 2.5 0 0 1-2.5-2.5v-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9h6M8 12.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M17 7h2.5v13H8" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-    Library
-  </button>
-</nav>
-
 <main class="wrap">
 
-  <div class="callout" id="accuracy-note">
+  <div class="callout">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-top:2px"><path d="M8 1.5 15 14.5H1L8 1.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 6.2v3.6M8 12.1v.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     <div>
-      <strong>Every translation here is AI-generated and unverified until someone marks it verified.</strong>
-      Spanish and Burmese are generally reliable. S'gaw Karen and Pwo Karen are low-resource languages —
-      treat those as rough drafts only, and have a fluent speaker on your team confirm the wording before
-      you rely on it for safety instructions.
+      <strong>These translations are AI-generated drafts, not yet checked by a fluent speaker.</strong>
+      Spanish and Burmese are generally reliable but should still be confirmed. S'gaw Karen and Pwo Karen
+      are not yet included — see the note at the bottom of this page. Do not rely on any unverified
+      translation for safety instructions until a fluent speaker on your team has confirmed it.
     </div>
   </div>
 
-  <section id="panel-announce">
-    <div class="panel">
-      <label class="field-label" for="announce-input">Message in English</label>
-      <textarea id="announce-input" placeholder="e.g. Caution: wet floor near the ice machine on the 3rd floor."></textarea>
-      <div class="row-end">
-        <button class="btn btn-primary" id="announce-btn">Translate to all 4 languages</button>
-      </div>
-      <div id="announce-status" class="status-line" hidden></div>
-    </div>
-    <div class="results" id="announce-results"></div>
-  </section>
+  <div class="toolbar">
+    <input type="text" id="search-input" placeholder="Search phrases…" />
+    <div class="chips" id="category-chips"></div>
+  </div>
 
-  <section id="panel-library" hidden>
-    <div class="toolbar">
-      <input type="text" id="search-input" placeholder="Search phrases…" />
-    </div>
-    <div class="chips" id="category-chips" style="margin-bottom:16px;"></div>
-    <div id="library-status" class="status-line"></div>
-    <div id="library-list"></div>
+  <div id="library-list"></div>
 
-    <div class="panel add-phrase">
-      <h3 style="font-size:1rem; margin-bottom:12px;">Add a phrase</h3>
-      <form class="add-phrase-form" id="add-form">
-        <div class="form-grid">
-          <div>
-            <label class="field-label" for="new-en">English</label>
-            <input type="text" id="new-en" placeholder="e.g. Please refill the ice bucket." required />
-          </div>
-          <div>
-            <label class="field-label" for="new-cat">Category</label>
-            <select id="new-cat">
-              <option value="housekeeping">Housekeeping</option>
-              <option value="safety">Safety</option>
-              <option value="general">General</option>
-            </select>
-          </div>
-        </div>
-        <div class="row-end">
-          <button class="btn btn-primary btn-sm" type="submit">Add phrase</button>
-        </div>
-      </form>
-    </div>
-  </section>
-
+  <div class="footer-panel">
+    <strong>About the Karen translations:</strong> S'gaw Karen and Pwo Karen are low-resource languages —
+    reliable AI translation for them isn't available yet, and guessing at the script risked giving your
+    team wrong safety information. Rather than publish unverified guesses for a safety tool, these columns
+    are left blank until real translations come in from a fluent speaker, a Karen-speaking staff member, or
+    a professional interpreter. Send the confirmed wording for any phrase and it will be added here.
+  </div>
 </main>
 
-<footer class="hint">Built for internal team communication — housekeeping &amp; safety phrases stay saved for everyone who opens this page.</footer>
+<footer class="hint">Internal team reference — housekeeping &amp; safety phrases in four languages.</footer>
 
 <script>
 (function(){
@@ -501,12 +365,10 @@
   ];
   var CAT_LABEL = { housekeeping:"Housekeeping", safety:"Safety", general:"General" };
 
-  var sample = null, db = null;
   var activeCategory = "all";
   var searchTerm = "";
-  var allDocs = [];
 
-  var seedPhrases = [
+  var phrases = [
     { category:"housekeeping", english:"Please clean and fully reset the room for the next guest.",
       es:"Por favor, limpie y prepare completamente la habitación para el próximo huésped.",
       my:"ဧည့်သည်သစ်အတွက် အခန်းကို အပြည့်အစုံ သန့်ရှင်းပြင်ဆင်ပေးပါ။" },
@@ -568,18 +430,11 @@
     attrs = attrs || {};
     for (var k in attrs){
       if (k === "class") node.className = attrs[k];
-      else if (k === "html") node.innerHTML = attrs[k];
       else if (k === "text") node.textContent = attrs[k];
       else node.setAttribute(k, attrs[k]);
     }
     (children || []).forEach(function(c){ if (c) node.appendChild(c); });
     return node;
-  }
-
-  function escapeHtml(s){
-    return String(s).replace(/[&<>"']/g, function(c){
-      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
-    });
   }
 
   async function copyText(text, btn){
@@ -593,154 +448,9 @@
     setTimeout(function(){ btn.textContent = original; }, 1400);
   }
 
-  // ---------- Tabs ----------
-  var tabAnnounce = document.getElementById("tab-announce");
-  var tabLibrary = document.getElementById("tab-library");
-  var panelAnnounce = document.getElementById("panel-announce");
-  var panelLibrary = document.getElementById("panel-library");
-
-  function selectTab(which){
-    var announceActive = which === "announce";
-    tabAnnounce.setAttribute("aria-selected", announceActive ? "true" : "false");
-    tabLibrary.setAttribute("aria-selected", announceActive ? "false" : "true");
-    panelAnnounce.hidden = !announceActive;
-    panelLibrary.hidden = announceActive;
-  }
-  tabAnnounce.addEventListener("click", function(){ selectTab("announce"); });
-  tabLibrary.addEventListener("click", function(){ selectTab("library"); });
-
-  // ---------- Announce tab (live translate) ----------
-  var announceInput = document.getElementById("announce-input");
-  var announceBtn = document.getElementById("announce-btn");
-  var announceStatus = document.getElementById("announce-status");
-  var announceResults = document.getElementById("announce-results");
-
-  function translatePrompt(english){
-    return "You are a professional translator for hotel housekeeping and safety communication. " +
-      "Translate the following English workplace message into four languages for hotel staff, " +
-      "using short, clear, everyday spoken wording (not formal or literary language):\n\n" +
-      "1. \"es\": Latin American Spanish (not European Spanish)\n" +
-      "2. \"my\": Burmese\n" +
-      "3. \"ksw\": S'gaw Karen — a Karen language of Myanmar/Thailand written in Karen script. This is NOT Burmese and NOT Pwo Karen.\n" +
-      "4. \"pwo\": (Western) Pwo Karen — a different Karen language with its own script. This is NOT S'gaw Karen and NOT Burmese.\n\n" +
-      "English text:\n\"\"\"" + english + "\"\"\"\n\n" +
-      "Reply with ONLY a JSON object of exactly this shape, no other text:\n" +
-      "{\"es\":{\"text\":\"...\",\"confidence\":\"high|medium|low\"}," +
-      "\"my\":{\"text\":\"...\",\"confidence\":\"high|medium|low\"}," +
-      "\"ksw\":{\"text\":\"...\",\"confidence\":\"high|medium|low\"}," +
-      "\"pwo\":{\"text\":\"...\",\"confidence\":\"high|medium|low\"}}\n\n" +
-      "Set \"confidence\" honestly for each: \"low\" if you are not confident the script or vocabulary is correct " +
-      "(this is common for ksw and pwo, which have very little training data), \"medium\" if reasonably confident, " +
-      "\"high\" only if a native speaker would very likely find it correct and natural.";
-  }
-
-  function confidenceBadge(level){
-    var map = {
-      high:   { cls:"badge-verified", label:"AI: high confidence" },
-      medium: { cls:"badge-draft",    label:"AI: medium confidence" },
-      low:    { cls:"badge-draft",    label:"AI: low confidence — verify" }
-    };
-    var m = map[level] || map.low;
-    return el("span", { class:"badge " + m.cls, text:m.label });
-  }
-
-  function renderAnnounceResults(english, data){
-    announceResults.innerHTML = "";
-    LANGS.forEach(function(langInfo){
-      var entry = data[langInfo.code] || { text:"", confidence:"low" };
-      var card = el("div", { class:"lang-card" });
-      var head = el("div", { class:"lang-card-head" }, [
-        el("span", { class:"lang-name", text:langInfo.label }),
-        confidenceBadge(entry.confidence)
-      ]);
-      var textEl = el("div", { class:"lang-text lang-" + langInfo.code, lang:langInfo.lang, text:entry.text || "—" });
-      var actions = el("div", { class:"lang-actions" });
-      var copyBtn = el("button", { class:"btn btn-ghost btn-sm", type:"button", text:"Copy" });
-      copyBtn.addEventListener("click", function(){ copyText(entry.text || "", copyBtn); });
-      actions.appendChild(copyBtn);
-
-      if (db) {
-        var saveBtn = el("button", { class:"btn btn-ghost btn-sm", type:"button", text:"Save to library" });
-        saveBtn.addEventListener("click", function(){
-          saveAnnounceAsPhrase(english, data);
-          saveBtn.textContent = "Saved";
-          saveBtn.disabled = true;
-        });
-        actions.appendChild(saveBtn);
-      }
-
-      card.appendChild(head);
-      card.appendChild(textEl);
-      card.appendChild(actions);
-      announceResults.appendChild(card);
-    });
-
-    var copyAllBtn = el("button", { class:"btn btn-primary btn-sm", type:"button", text:"Copy all 4 languages" });
-    copyAllBtn.addEventListener("click", function(){
-      var block = LANGS.map(function(l){
-        var e = data[l.code] || {};
-        return l.label + ": " + (e.text || "—");
-      }).join("\n\n");
-      copyText(english + "\n\n" + block, copyAllBtn);
-    });
-    var footRow = el("div", { style:"margin-top:4px;" }, [copyAllBtn]);
-    announceResults.appendChild(footRow);
-  }
-
-  function saveAnnounceAsPhrase(english, data){
-    if (!db) return;
-    var translations = {};
-    LANGS.forEach(function(l){
-      var entry = data[l.code] || {};
-      translations[l.code] = { text: entry.text || "", status: entry.text ? "draft" : "empty" };
-    });
-    db.collection("phrases").add({
-      category: "general",
-      english: english,
-      translations: translations,
-      createdAt: new Date().toISOString()
-    }).catch(function(){ /* surfaced via UI status only when it matters */ });
-  }
-
-  var announceCtrl = null;
-  announceBtn.addEventListener("click", async function(){
-    var text = announceInput.value.trim();
-    if (!text) return;
-    if (!sample) {
-      announceStatus.hidden = false;
-      announceStatus.className = "status-line error";
-      announceStatus.textContent = "Live translation needs this page open inside Claude — that connection isn't available right now.";
-      return;
-    }
-    announceBtn.disabled = true;
-    announceStatus.hidden = false;
-    announceStatus.className = "status-line";
-    announceStatus.textContent = "Thinking…";
-    announceResults.innerHTML = "";
-    try {
-      var data = await sample.json(translatePrompt(text), { modelTier:"default", cache:false });
-      announceStatus.hidden = true;
-      renderAnnounceResults(text, data);
-    } catch (e) {
-      announceStatus.className = "status-line error";
-      if (e.code === "not_granted") {
-        announceStatus.textContent = "Translation wasn't allowed for this page.";
-      } else if (e.code === "rate_limited") {
-        announceStatus.textContent = "Too many requests right now — try again in a moment.";
-      } else {
-        announceStatus.textContent = "Couldn't get a translation just now. Try again.";
-      }
-    } finally {
-      announceBtn.disabled = false;
-    }
-  });
-
-  // ---------- Library tab ----------
   var chipsWrap = document.getElementById("category-chips");
   var searchInput = document.getElementById("search-input");
-  var libraryStatus = document.getElementById("library-status");
   var libraryList = document.getElementById("library-list");
-  var addForm = document.getElementById("add-form");
 
   CATEGORIES.forEach(function(cat){
     var chip = el("button", { class:"chip", type:"button", text:cat.label, "aria-pressed": cat.code === "all" ? "true" : "false" });
@@ -748,230 +458,78 @@
       activeCategory = cat.code;
       Array.prototype.forEach.call(chipsWrap.children, function(c){ c.setAttribute("aria-pressed", "false"); });
       chip.setAttribute("aria-pressed", "true");
-      renderLibrary();
+      render();
     });
     chipsWrap.appendChild(chip);
   });
 
   searchInput.addEventListener("input", function(){
     searchTerm = searchInput.value.trim().toLowerCase();
-    renderLibrary();
+    render();
   });
 
-  function docMatches(docData){
-    if (activeCategory !== "all" && docData.category !== activeCategory) return false;
+  function matches(p){
+    if (activeCategory !== "all" && p.category !== activeCategory) return false;
     if (!searchTerm) return true;
-    var hay = [docData.english].concat(
-      LANGS.map(function(l){ return (docData.translations && docData.translations[l.code] && docData.translations[l.code].text) || ""; })
-    ).join(" ").toLowerCase();
+    var hay = [p.english, p.es, p.my].join(" ").toLowerCase();
     return hay.indexOf(searchTerm) !== -1;
   }
 
-  function statusBadge(status){
-    if (status === "verified") return el("span", { class:"badge badge-verified", text:"✓ Verified" });
-    if (status === "draft") return el("span", { class:"badge badge-draft", text:"Draft — unverified" });
-    return el("span", { class:"badge badge-empty", text:"Not translated" });
-  }
-
-  function singleTranslatePrompt(english, langCode, langLabel){
-    return "Translate this English hotel workplace phrase into " + langLabel +
-      (langCode === "ksw" ? " (S'gaw Karen — a Karen language written in Karen script, NOT Burmese, NOT Pwo Karen)" : "") +
-      (langCode === "pwo" ? " (Western Pwo Karen — a Karen language with its own script, NOT S'gaw Karen, NOT Burmese)" : "") +
-      ". Use short, clear, everyday spoken wording suitable for a hotel housekeeping or safety instruction.\n\n" +
-      "English: \"\"\"" + english + "\"\"\"\n\n" +
-      "Reply with ONLY the translated sentence, nothing else — no quotes, no explanation.";
-  }
-
-  function renderPhraseCard(docSnap){
-    var id = docSnap.id;
-    var data = docSnap.data();
+  function renderCard(p){
     var card = el("div", { class:"phrase-card" });
     var head = el("div", { class:"phrase-head" }, [
-      el("div", { class:"phrase-en", text:data.english }),
-      el("span", { class:"cat-chip", text: CAT_LABEL[data.category] || "General" })
+      el("div", { class:"phrase-en", text:p.english }),
+      el("span", { class:"cat-chip", text: CAT_LABEL[p.category] || "General" })
     ]);
     var rows = el("div", { class:"lang-rows" });
 
     LANGS.forEach(function(l){
-      var t = (data.translations && data.translations[l.code]) || { text:"", status:"empty" };
+      var text = p[l.code];
       var row = el("div", { class:"lang-row" });
+      var badge = text
+        ? el("span", { class:"badge badge-draft", text:"AI draft — unverified" })
+        : el("span", { class:"badge badge-empty", text:"Not yet added" });
       var rowHead = el("div", { class:"lang-row-head" }, [
         el("span", { class:"lang-row-label", text:l.label }),
-        statusBadge(t.status)
+        badge
       ]);
-      var textEl = t.text
-        ? el("div", { class:"lang-row-text lang-" + l.code, lang:l.lang, text:t.text })
+      var textEl = text
+        ? el("div", { class:"lang-row-text lang-" + l.code, lang:l.lang, text:text })
         : el("div", { class:"lang-row-text placeholder", text:"Not yet translated" });
-      var actions = el("div", { class:"lang-row-actions" });
-
-      if (!t.text) {
-        var genBtn = el("button", { class:"btn btn-ghost btn-sm", type:"button", text: sample ? "Generate" : "Unavailable" });
-        genBtn.disabled = !sample;
-        genBtn.addEventListener("click", async function(){
-          genBtn.disabled = true;
-          genBtn.textContent = "Thinking…";
-          try {
-            var result = await sample(singleTranslatePrompt(data.english, l.code, l.label), { modelTier:"quick", cache:false });
-            var newTranslations = shallowCopy(data.translations || {});
-            newTranslations[l.code] = { text: result.text.trim(), status:"draft" };
-            await db.doc("phrases/" + id).update({ translations: newTranslations });
-          } catch (e) {
-            genBtn.textContent = "Failed — retry";
-            genBtn.disabled = false;
-          }
-        });
-        actions.appendChild(genBtn);
-      } else {
-        var copyBtn = el("button", { class:"btn btn-ghost btn-sm", type:"button", text:"Copy" });
-        copyBtn.addEventListener("click", function(){ copyText(t.text, copyBtn); });
-        actions.appendChild(copyBtn);
-
-        if (t.status !== "verified") {
-          var verifyBtn = el("button", { class:"btn btn-ghost btn-sm", type:"button", text:"Mark verified" });
-          verifyBtn.addEventListener("click", async function(){
-            var newTranslations = shallowCopy(data.translations || {});
-            newTranslations[l.code] = { text: t.text, status:"verified" };
-            await db.doc("phrases/" + id).update({ translations: newTranslations });
-          });
-          actions.appendChild(verifyBtn);
-        } else {
-          var unverifyBtn = el("button", { class:"btn btn-ghost btn-sm", type:"button", text:"Revert to draft" });
-          unverifyBtn.addEventListener("click", async function(){
-            var newTranslations = shallowCopy(data.translations || {});
-            newTranslations[l.code] = { text: t.text, status:"draft" };
-            await db.doc("phrases/" + id).update({ translations: newTranslations });
-          });
-          actions.appendChild(unverifyBtn);
-        }
-
-        if (sample) {
-          var regenBtn = el("button", { class:"btn btn-ghost btn-sm", type:"button", text:"Regenerate" });
-          regenBtn.addEventListener("click", async function(){
-            regenBtn.disabled = true;
-            regenBtn.textContent = "Thinking…";
-            try {
-              var result = await sample(singleTranslatePrompt(data.english, l.code, l.label), { modelTier:"quick", cache:false });
-              var newTranslations = shallowCopy(data.translations || {});
-              newTranslations[l.code] = { text: result.text.trim(), status:"draft" };
-              await db.doc("phrases/" + id).update({ translations: newTranslations });
-            } catch (e) {
-              regenBtn.textContent = "Failed";
-            }
-          });
-          actions.appendChild(regenBtn);
-        }
-      }
-
       row.appendChild(rowHead);
       row.appendChild(textEl);
-      row.appendChild(actions);
+      if (text) {
+        var actions = el("div", { class:"lang-row-actions" });
+        var copyBtn = el("button", { class:"btn", type:"button", text:"Copy" });
+        copyBtn.addEventListener("click", function(){ copyText(text, copyBtn); });
+        actions.appendChild(copyBtn);
+        row.appendChild(actions);
+      }
       rows.appendChild(row);
     });
 
-    var deleteRow = el("div", { style:"margin-top:12px; text-align:right;" });
-    var deleteBtn = el("button", { class:"btn btn-ghost btn-sm", type:"button", text:"Delete phrase" });
-    deleteBtn.addEventListener("click", function(){
-      if (confirm("Delete this phrase for everyone?")) {
-        db.doc("phrases/" + id).delete();
-      }
+    var copyAllBtn = el("button", { class:"btn btn-primary", type:"button", text:"Copy all languages" });
+    copyAllBtn.addEventListener("click", function(){
+      var block = LANGS.map(function(l){ return l.label + ": " + (p[l.code] || "Not yet translated"); }).join("\n\n");
+      copyText(p.english + "\n\n" + block, copyAllBtn);
     });
-    deleteRow.appendChild(deleteBtn);
 
     card.appendChild(head);
     card.appendChild(rows);
-    card.appendChild(deleteRow);
+    card.appendChild(el("div", { style:"margin-top:12px;" }, [copyAllBtn]));
     return card;
   }
 
-  function shallowCopy(obj){
-    var copy = {};
-    for (var k in obj) copy[k] = obj[k];
-    return copy;
-  }
-
-  function renderLibrary(){
+  function render(){
     libraryList.innerHTML = "";
-    var visible = allDocs.filter(function(d){ return docMatches(d.data()); });
-    if (!db) {
-      libraryList.appendChild(el("div", { class:"empty-state", text:"The phrase library needs this page open inside Claude — that connection isn't available right now." }));
-      return;
-    }
+    var visible = phrases.filter(matches);
     if (visible.length === 0) {
       libraryList.appendChild(el("div", { class:"empty-state", text:"No phrases match. Try a different search or category." }));
       return;
     }
-    visible.forEach(function(d){ libraryList.appendChild(renderPhraseCard(d)); });
+    visible.forEach(function(p){ libraryList.appendChild(renderCard(p)); });
   }
 
-  addForm.addEventListener("submit", async function(ev){
-    ev.preventDefault();
-    var enInput = document.getElementById("new-en");
-    var catSelect = document.getElementById("new-cat");
-    var english = enInput.value.trim();
-    if (!english || !db) return;
-    var translations = {};
-    LANGS.forEach(function(l){ translations[l.code] = { text:"", status:"empty" }; });
-    await db.collection("phrases").add({
-      category: catSelect.value,
-      english: english,
-      translations: translations,
-      createdAt: new Date().toISOString()
-    });
-    enInput.value = "";
-  });
-
-  async function seedIfEmpty(){
-    var snap = await db.collection("phrases").limit(1).get();
-    if (!snap.empty) return;
-    for (var i = 0; i < seedPhrases.length; i++) {
-      var p = seedPhrases[i];
-      var translations = {
-        es:  { text:p.es || "", status: p.es ? "draft" : "empty" },
-        my:  { text:p.my || "", status: p.my ? "draft" : "empty" },
-        ksw: { text:"", status:"empty" },
-        pwo: { text:"", status:"empty" }
-      };
-      await db.collection("phrases").add({
-        category: p.category,
-        english: p.english,
-        translations: translations,
-        createdAt: new Date(Date.now() + i).toISOString()
-      });
-    }
-  }
-
-  // ---------- Boot ----------
-  async function init(){
-    try { sample = await claude.use("sample"); } catch (e) { sample = null; }
-    try { db = await claude.use("db"); } catch (e) { db = null; }
-
-    if (!sample) {
-      announceBtn.disabled = false; // keep clickable so the message explains why it can't run
-    }
-
-    if (db) {
-      libraryStatus.textContent = "Loading your team's saved phrases…";
-      try { await seedIfEmpty(); } catch (e) { /* ignore; listener below still renders whatever exists */ }
-      db.collection("phrases").orderBy("createdAt", "asc").onSnapshot(function(snap){
-        allDocs = snap.docs;
-        libraryStatus.textContent = "";
-        renderLibrary();
-      }, function(err){
-        libraryStatus.className = "status-line error";
-        libraryStatus.textContent = "Couldn't load the phrase library right now.";
-      });
-    } else {
-      renderLibrary();
-    }
-  }
-
-  if (window.claude && typeof window.claude.use === "function") {
-    init();
-  } else {
-    announceStatus.hidden = false;
-    announceStatus.className = "status-line";
-    announceStatus.textContent = "Open this page inside Claude to use live translation and the saved phrase library.";
-    renderLibrary();
-  }
+  render();
 })();
 </script>
