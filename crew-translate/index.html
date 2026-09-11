@@ -279,6 +279,7 @@
     white-space:nowrap;
   }
   .badge-draft{ background:var(--warn-bg); color:var(--warn-text); border-color:var(--warn-line); }
+  .badge-caution{ background:var(--warn-bg); color:var(--danger-text); border-color:var(--warn-line); }
   .badge-empty{ background:var(--empty-bg); color:var(--empty-text); }
 
   .empty-state{
@@ -323,9 +324,12 @@
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-top:2px"><path d="M8 1.5 15 14.5H1L8 1.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8 6.2v3.6M8 12.1v.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     <div>
       <strong>These translations are AI-generated drafts, not yet checked by a fluent speaker.</strong>
-      Spanish and Burmese are generally reliable but should still be confirmed. S'gaw Karen and Pwo Karen
-      are not yet included — see the note at the bottom of this page. Do not rely on any unverified
-      translation for safety instructions until a fluent speaker on your team has confirmed it.
+      Spanish and Burmese are generally reliable but should still be confirmed. S'gaw Karen is a new,
+      first-pass AI draft and needs extra scrutiny — S'gaw Karen is a low-resource language for AI
+      translation, so treat every S'gaw Karen line as a rough guess until a fluent speaker checks it,
+      word by word. Pwo Karen is not yet included — see the note at the bottom of this page. Do not rely
+      on any unverified translation for safety instructions until a fluent speaker on your team has
+      confirmed it.
     </div>
   </div>
 
@@ -337,11 +341,16 @@
   <div id="library-list"></div>
 
   <div class="footer-panel">
-    <strong>About the Karen translations:</strong> S'gaw Karen and Pwo Karen are low-resource languages —
-    reliable AI translation for them isn't available yet, and guessing at the script risked giving your
-    team wrong safety information. Rather than publish unverified guesses for a safety tool, these columns
-    are left blank until real translations come in from a fluent speaker, a Karen-speaking staff member, or
-    a professional interpreter. Send the confirmed wording for any phrase and it will be added here.
+    <strong>About S'gaw Karen:</strong> S'gaw Karen is a low-resource language for AI translation, so the
+    drafts above are a genuine first attempt, not a confirmed translation — accuracy, word choice, and even
+    the script itself could be off in places. Please have a fluent S'gaw Karen speaker on your team review
+    every phrase, especially the Safety ones, before anyone relies on them. Send corrected wording for any
+    phrase and it will be updated here.
+    <br><br>
+    <strong>About Pwo Karen:</strong> Pwo Karen has even less text available for AI to learn from, so no
+    draft is included — guessing here felt too unreliable even as a starting point. These columns are left
+    blank until real translations come in from a fluent speaker, a Karen-speaking staff member, or a
+    professional interpreter.
   </div>
 </main>
 
@@ -371,58 +380,76 @@
   var phrases = [
     { category:"housekeeping", english:"Please clean and fully reset the room for the next guest.",
       es:"Por favor, limpie y prepare completamente la habitación para el próximo huésped.",
-      my:"ဧည့်သည်သစ်အတွက် အခန်းကို အပြည့်အစုံ သန့်ရှင်းပြင်ဆင်ပေးပါ။" },
+      my:"ဧည့်သည်သစ်အတွက် အခန်းကို အပြည့်အစုံ သန့်ရှင်းပြင်ဆင်ပေးပါ။",
+      ksw:"ကွဲးလၢအဂ့ၤဒီးဘှီက့ၤဒၢးအံၤဒီဘ့ၣ်လၢပှၤတမှံၤသီအဂီၢ်တက့ၢ်." },
     { category:"housekeeping", english:"Change all bed sheets, pillowcases, and towels.",
       es:"Cambie todas las sábanas, fundas de almohada y toallas.",
-      my:"အိပ်ရာခင်း၊ ခေါင်းအုံးအိတ်နှင့် တဲဝါအားလုံးကို လဲလှယ်ပေးပါ။" },
+      my:"အိပ်ရာခင်း၊ ခေါင်းအုံးအိတ်နှင့် တဲဝါအားလုံးကို လဲလှယ်ပေးပါ။",
+      ksw:"လဲလိာ်က့ၤလီၢ်ခူသတြဲ, ခိၣ်လုမှာ်အဟံၣ်ဒီးထၢၣ်ညၣ်ကိးမံးဒဲးတက့ၢ်." },
     { category:"housekeeping", english:"Restock the mini fridge and coffee station.",
       es:"Reabastezca el refrigerador pequeño y la estación de café.",
-      my:"မီနီရေခဲသေတ္တာနှင့် ကော်ဖီစားပွဲကို ပြန်လည်ဖြည့်တင်းပေးပါ။" },
+      my:"မီနီရေခဲသေတ္တာနှင့် ကော်ဖီစားပွဲကို ပြန်လည်ဖြည့်တင်းပေးပါ။",
+      ksw:"ထၢဒိးက့ၤတၢ်လၢကသုတၢ်ခုၣ်ဖိဒီးကီၣ်ၾီးလီၢ်အံၤတက့ၢ်." },
     { category:"housekeeping", english:"Vacuum the carpet and check under the bed.",
       es:"Pase la aspiradora por la alfombra y revise debajo de la cama.",
-      my:"ကော်ဇောကို ဖုန်စုပ်စက်နှင့်သုတ်ပြီး ကုတင်အောက်ကို စစ်ဆေးပါ။" },
+      my:"ကော်ဇောကို ဖုန်စုပ်စက်နှင့်သုတ်ပြီး ကုတင်အောက်ကို စစ်ဆေးပါ။",
+      ksw:"ဆုးကွံာ်ဘိလၢအဖံးလိၤဒီးကွၢ်လၢလီၢ်ခူဖီလာ်တက့ၢ်." },
     { category:"housekeeping", english:"Empty all trash bins and replace liners.",
       es:"Vacíe todos los cestos de basura y reemplace las bolsas.",
-      my:"အမှိုက်ပုံးအားလုံးကို လွတ်အောင်လုပ်ပြီး အိတ်အသစ်လဲပါ။" },
+      my:"အမှိုက်ပုံးအားလုံးကို လွတ်အောင်လုပ်ပြီး အိတ်အသစ်လဲပါ။",
+      ksw:"လူလီၤကွံာ်တၢ်အဲကလၢအဒၢအပူၤကိးဖိဒဲးဒီးထၢဖှိၣ်အသီတက့ၢ်." },
     { category:"housekeeping", english:"This room is Do Not Disturb — the guest is inside.",
       es:"Esta habitación tiene el aviso de No Molestar — el huésped está adentro.",
-      my:"ဤအခန်းသည် 'မနှောင့်ယှက်ပါနှင့်' ဖြစ်ပါသည် — ဧည့်သည် အထဲတွင်ရှိနေပါသည်။" },
+      my:"ဤအခန်းသည် 'မနှောင့်ယှက်ပါနှင့်' ဖြစ်ပါသည် — ဧည့်သည် အထဲတွင်ရှိနေပါသည်။",
+      ksw:"ဒၢးအံၤမ့ၢ် 'တဆှၢနှၤတၢ်ဘၣ်' — ပှၤတမှံၤအိၣ်လၢအပူၤ." },
     { category:"housekeeping", english:"This room is out of order — please skip it.",
       es:"Esta habitación está fuera de servicio — por favor, sáltela.",
-      my:"ဤအခန်းသည် အသုံးမပြုနိုင်ပါ — ကျေးဇူးပြု၍ ကျော်သွားပါ။" },
+      my:"ဤအခန်းသည် အသုံးမပြုနိုင်ပါ — ကျေးဇူးပြု၍ ကျော်သွားပါ။",
+      ksw:"ဒၢးအံၤတဂ့ၤလၢၤဘၣ် — ကွဲးဟးဆှဲးအီၤတက့ၢ်." },
     { category:"safety", english:"Caution: wet floor.",
       es:"Precaución: piso mojado.",
-      my:"သတိပြုပါ - ကြမ်းပြင်စိုထိုင်းနေသည်။" },
+      my:"သတိပြုပါ - ကြမ်းပြင်စိုထိုင်းနေသည်။",
+      ksw:"ပလီၢ်နသးတက့ၢ် - ခီၣ်ဖံးအိၣ်စိၣ်." },
     { category:"safety", english:"Always wear gloves when cleaning bathrooms.",
       es:"Use siempre guantes al limpiar los baños.",
-      my:"ရေချိုးခန်းများ သန့်ရှင်းရာတွင် လက်အိတ်ကို အမြဲစွပ်ပါ။" },
+      my:"ရေချိုးခန်းများ သန့်ရှင်းရာတွင် လက်အိတ်ကို အမြဲစွပ်ပါ။",
+      ksw:"ဖဲကွဲးဆှဲးကွံာ်ထံလုၢ်ကရူၢ်အခါ, ကးထၢၣ်စုကီၢ်ကိးဘျီဒဲးတက့ၢ်." },
     { category:"safety", english:"Never mix cleaning chemicals together.",
       es:"Nunca mezcle productos químicos de limpieza entre sí.",
-      my:"သန့်ရှင်းရေးဓာတုပစ္စည်းများကို တစ်ခုနှင့်တစ်ခု ဘယ်တော့မှ မရောနှောပါနှင့်။" },
+      my:"သန့်ရှင်းရေးဓာတုပစ္စည်းများကို တစ်ခုနှင့်တစ်ခု ဘယ်တော့မှ မရောနှောပါနှင့်။",
+      ksw:"တဘၣ်ဃူထၢဖှိၣ်တၢ်ကသံၣ်လၢကကွဲးဆှဲးတၢ်တဖၣ်လိာ်အသးနီတဘျီဘၣ်." },
     { category:"safety", english:"If you get injured, tell your supervisor right away.",
       es:"Si se lastima, avise a su supervisor de inmediato.",
-      my:"ဒဏ်ရာရရှိပါက သင့်ကြီးကြပ်သူကို ချက်ချင်းအကြောင်းကြားပါ။" },
+      my:"ဒဏ်ရာရရှိပါက သင့်ကြီးကြပ်သူကို ချက်ချင်းအကြောင်းကြားပါ။",
+      ksw:"နမ့ၢ်ဘၣ်ဒိဘၣ်ထံးန့ၣ်, ကတိၤဒိးနပှၤကွၢ်ထွဲနတၢ်မၤအလီၢ်ချ့ချ့တက့ၢ်." },
     { category:"safety", english:"The fire exit is this way.",
       es:"La salida de incendios está por aquí.",
-      my:"မီးလောင်ရာအရေးပေါ်ထွက်ပေါက်သည် ဤလမ်းဖြစ်ပါသည်။" },
+      my:"မီးလောင်ရာအရေးပေါ်ထွက်ပေါက်သည် ဤလမ်းဖြစ်ပါသည်။",
+      ksw:"မ့ၣ်အူအဟးထီၣ်ကျဲအိၣ်လၢအံၤ." },
     { category:"safety", english:"Wash your hands before and after cleaning each room.",
       es:"Lávese las manos antes y después de limpiar cada habitación.",
-      my:"အခန်းတိုင်းသန့်ရှင်းခြင်းမပြုမီနှင့် ပြုပြီးနောက် လက်ကိုဆေးပါ။" },
+      my:"အခန်းတိုင်းသန့်ရှင်းခြင်းမပြုမီနှင့် ပြုပြီးနောက် လက်ကိုဆေးပါ။",
+      ksw:"ဆူးနစုလၢနကွဲးဆှဲးတၢ်ဒၢးကိးဘူးဒဲးအမဲာ်ညါဒီးအလီခံတက့ၢ်." },
     { category:"safety", english:"If you feel dizzy or sick, stop working and tell your supervisor.",
       es:"Si se siente mareado o enfermo, deje de trabajar y avise a su supervisor.",
-      my:"မူးဝေခြင်း သို့မဟုတ် မကျန်းမာပါက အလုပ်ရပ်ပြီး သင့်ကြီးကြပ်သူကို ပြောပါ။" },
+      my:"မူးဝေခြင်း သို့မဟုတ် မကျန်းမာပါက အလုပ်ရပ်ပြီး သင့်ကြီးကြပ်သူကို ပြောပါ။",
+      ksw:"နမ့ၢ်သးက့ၤဂ့ၤဘၣ်ဆါန့ၣ်, ဆိကတီၢ်နတၢ်မၤဒီးကတိၤဒိးနပှၤကွၢ်ထွဲတက့ၢ်." },
     { category:"general", english:"Thank you for your hard work today.",
       es:"Gracias por su arduo trabajo hoy.",
-      my:"ယနေ့ သင့်ရဲ့ ကြိုးစားအားထုတ်မှုအတွက် ကျေးဇူးတင်ပါသည်။" },
+      my:"ယနေ့ သင့်ရဲ့ ကြိုးစားအားထုတ်မှုအတွက် ကျေးဇူးတင်ပါသည်။",
+      ksw:"တၢ်ဘျုးလၢနတၢ်မၤသကုၤအဂ့ၤတနံၤအံၤအဂီၢ်." },
     { category:"general", english:"Your shift starts at 8:00 AM tomorrow.",
       es:"Su turno comienza a las 8:00 a. m. mañana.",
-      my:"မနက်ဖြန် သင့်အလုပ်ချိန် နံနက် ၈:၀၀ တွင် စတင်ပါမည်။" },
+      my:"မနက်ဖြန် သင့်အလုပ်ချိန် နံနက် ၈:၀၀ တွင် စတင်ပါမည်။",
+      ksw:"မဆါန့ၣ်, နတၢ်မၤစးထီၣ်လၢမု့ၢ်ဂီၤ ၈:၀၀ နၣ်ရံၣ်." },
     { category:"general", english:"Please take your break now.",
       es:"Por favor, tome su descanso ahora.",
-      my:"ကျေးဇူးပြု၍ အခုအနားယူပါ။" },
+      my:"ကျေးဇူးပြု၍ အခုအနားယူပါ။",
+      ksw:"ဆိကတီၢ်နသးတစိၢ်ဖိလီၤတဲာ်တက့ၢ်." },
     { category:"general", english:"Great job — the guest left a nice comment about your work.",
       es:"¡Buen trabajo! El huésped dejó un comentario agradable sobre su trabajo.",
-      my:"အလုပ်ကောင်းပါသည် — ဧည့်သည်က သင့်အလုပ်အတွက် ကောင်းမွန်သောမှတ်ချက်ချန်ခဲ့ပါသည်။" }
+      my:"အလုပ်ကောင်းပါသည် — ဧည့်သည်က သင့်အလုပ်အတွက် ကောင်းမွန်သောမှတ်ချက်ချန်ခဲ့ပါသည်။",
+      ksw:"နမၤဂ့ၤဒိၣ်မး — ပှၤတမှံၤကွဲးထၢဖှိၣ်တၢ်ကတိၤဂ့ၤဂ့ၤဘၣ်ဃးနတၢ်မၤ." }
   ];
 
   function el(tag, attrs, children){
@@ -486,9 +513,14 @@
     LANGS.forEach(function(l){
       var text = p[l.code];
       var row = el("div", { class:"lang-row" });
-      var badge = text
-        ? el("span", { class:"badge badge-draft", text:"AI draft — unverified" })
-        : el("span", { class:"badge badge-empty", text:"Not yet added" });
+      var badge;
+      if (!text) {
+        badge = el("span", { class:"badge badge-empty", text:"Not yet added" });
+      } else if (l.code === "ksw") {
+        badge = el("span", { class:"badge badge-caution", text:"AI draft — verify before use" });
+      } else {
+        badge = el("span", { class:"badge badge-draft", text:"AI draft — unverified" });
+      }
       var rowHead = el("div", { class:"lang-row-head" }, [
         el("span", { class:"lang-row-label", text:l.label }),
         badge
