@@ -46,7 +46,7 @@ test("feedback button opens a pre-filled email", async () => {
 });
 
 test("lists all seeded phrases on load", async () => {
-  assert.equal(await page.locator(".phrase-card").count(), 18);
+  assert.equal(await page.locator(".phrase-card").count(), 19);
 });
 
 test("category chips filter the list", async () => {
@@ -54,7 +54,7 @@ test("category chips filter the list", async () => {
   await chips.getByRole("button", { name: "Safety", exact: true }).click();
   assert.equal(await page.locator(".phrase-card").count(), 7);
   await chips.getByRole("button", { name: "All", exact: true }).click();
-  assert.equal(await page.locator(".phrase-card").count(), 18);
+  assert.equal(await page.locator(".phrase-card").count(), 19);
 });
 
 test("search filters by phrase text", async () => {
