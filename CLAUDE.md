@@ -13,6 +13,21 @@ no external JS/CSS files, no dependencies beyond two Google Fonts `<link>` tags)
 
 Open `crew-translate/index.html` directly in a browser — there is nothing to install or build.
 
+## Testing
+
+There's a small Playwright + `node:test` suite under `tests/` that serves the HTML file locally and
+drives it in a real (headless Chromium) browser — it's dev tooling only and doesn't add a build step to
+the app itself.
+
+```
+npm install   # once, installs the `playwright` devDependency
+npm test      # runs tests/*.test.mjs via `node --test`
+```
+
+To run a single test, use Node's built-in filter: `node --test --test-name-pattern="category chips"`.
+Update `tests/app.test.mjs` when phrase content or DOM structure changes (e.g. phrase count assertions,
+badge text, selector names).
+
 This same file is also published as a Claude Artifact for the team to use on their phones without a
 GitHub/dev environment. When editing `index.html` for a real change, republish it via the Artifact tool
 to the existing artifact URL (`url:` param, not a fresh publish) so the live link stays the same instead
@@ -44,6 +59,13 @@ Translation confidence is intentionally uneven and the UI reflects it:
 When adding or editing phrases, preserve this pattern (all four language keys present per phrase, `pwo`
 omitted/empty until real translations exist) and keep the safety disclaimers in the top `.callout` and
 bottom `.footer-panel` accurate to whatever content actually ships.
+
+## Feedback button
+
+The header's "Feedback" link opens a pre-filled `mailto:` (built at runtime from `FEEDBACK_EMAIL`,
+`FEEDBACK_SUBJECT`, `FEEDBACK_BODY` near the top of the `<script>` block) rather than posting anywhere —
+there's no backend, by design (see capabilities constraint above). `FEEDBACK_EMAIL` is still a placeholder
+(`feedback@your-hotel.example`); replace it with the real inbox before treating this as done.
 
 ## Design tokens
 

@@ -110,6 +110,13 @@
     border-bottom:1px solid var(--line);
     padding-block:calc(14px + env(safe-area-inset-top)) 14px;
   }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
   .brand{
     display:flex;
     align-items:baseline;
@@ -121,6 +128,11 @@
     font-size:0.78rem;
     color:var(--text-muted);
   }
+  .feedback-btn{
+    flex-shrink:0;
+    text-decoration:none;
+  }
+  .feedback-btn svg{ flex-shrink:0; }
 
   main{ padding-block:20px 40px; }
 
@@ -310,11 +322,15 @@
 </style>
 
 <header class="top">
-  <div class="wrap">
+  <div class="wrap header-row">
     <div class="brand">
       <h1>Crew Translate</h1>
       <span class="tag">English · Spanish · Burmese · S'gaw &amp; Pwo Karen</span>
     </div>
+    <a class="btn feedback-btn" id="feedback-link" href="#">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 3.5h12v7.5a1 1 0 0 1-1 1H6l-3 2.5v-2.5H3a1 1 0 0 1-1-1V3.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      Feedback
+    </a>
   </div>
 </header>
 
@@ -373,6 +389,18 @@
     { code:"general", label:"General" }
   ];
   var CAT_LABEL = { housekeeping:"Housekeeping", safety:"Safety", general:"General" };
+
+  // TODO: replace with the real inbox this hotel's feedback should reach.
+  var FEEDBACK_EMAIL = "feedback@your-hotel.example";
+  var FEEDBACK_SUBJECT = "Crew Translate feedback";
+  var FEEDBACK_BODY = "Phrase: \nLanguage: \nWhat's wrong or missing: \n";
+
+  var feedbackLink = document.getElementById("feedback-link");
+  if (feedbackLink) {
+    feedbackLink.href = "mailto:" + FEEDBACK_EMAIL +
+      "?subject=" + encodeURIComponent(FEEDBACK_SUBJECT) +
+      "&body=" + encodeURIComponent(FEEDBACK_BODY);
+  }
 
   var activeCategory = "all";
   var searchTerm = "";
