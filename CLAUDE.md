@@ -64,8 +64,8 @@ bottom `.footer-panel` accurate to whatever content actually ships.
 
 The header's "Feedback" link opens a pre-filled `mailto:` (built at runtime from `FEEDBACK_EMAIL`,
 `FEEDBACK_SUBJECT`, `FEEDBACK_BODY` near the top of the `<script>` block) rather than posting anywhere —
-there's no backend, by design (see capabilities constraint above). `FEEDBACK_EMAIL` is still a placeholder
-(`feedback@your-hotel.example`); replace it with the real inbox before treating this as done.
+there's no backend, by design (see capabilities constraint above). `FEEDBACK_EMAIL` is the GM's own inbox
+(svadgama@shgltd.com) — update it there if that changes.
 
 ## Design tokens
 
